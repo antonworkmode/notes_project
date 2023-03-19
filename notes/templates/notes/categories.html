@@ -1,0 +1,17 @@
+<!-- vi notes/templates/notes/categories.html -->
+
+{% extends "notes/base.html" %}
+
+{% block content %}
+  <p>Categories:</p>
+  <ul>
+    {% for category in categories %}
+      <li>
+        <a href="{% url 'notes:category' category.id %}">{{ category }}</a>
+      </li>
+    {% empty %}
+      <li>No categories have been added yet.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'notes:new_category' %}">Add new category</a>
+{% endblock content %}

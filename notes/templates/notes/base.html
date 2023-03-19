@@ -1,0 +1,15 @@
+<!-- vi notes/templates/notes/base.html -->
+
+<p>
+  <a href="{% url 'notes:index' %}">Notes Project</a> -
+  <a href="{% url 'notes:categories' %}">Categories</a> -
+  {% if user.is_authenticated %}
+    Hello, {{ user.username }} -
+    <a href="{% url 'users:logout' %}">Sign out</a>
+  {% else %}
+    <a href="{% url 'users:login' %}">Sign in</a> -
+    <a href="{% url 'users:signup' %}">Sign up</a>
+  {% endif %}
+</p>
+
+{% block content %}{% endblock content %}

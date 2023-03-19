@@ -1,0 +1,24 @@
+<!-- vi notes/templates/notes/category.html -->
+
+{% extends "notes/base.html" %}
+
+{% block content %}
+  <p>Category: {{ category }}</p>
+  <p>Notes:</p>
+  <p>
+    <a href="{% url 'notes:new_note' category.id %}">Add a new note</a>
+  </p>
+  <ul>
+  {% for note in notes %}
+    <li>
+      <p>{{ note.date_added|date:'M d, Y H:i' }}</p>
+      <p>{{ note.text|linebreaks }}</p>
+      <p>
+        <a href="{% url 'notes:edit_note' note.id %}">Edit note</a>
+      </p>
+    </li>
+  {% empty %}
+    <li>There are no notes for this category yet.</li>
+  {% endfor %}
+  </ul>
+{% endblock content %}

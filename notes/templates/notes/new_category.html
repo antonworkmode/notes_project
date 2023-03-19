@@ -1,0 +1,12 @@
+<!-- vi notes/templates/notes/new_category.html -->
+
+{% extends "notes/base.html" %}
+
+{% block content %}
+  <p>Add new category:</p>
+  <form action="{% url 'notes:new_category' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add category</button>
+  </form>
+{% endblock content %}
